@@ -34,4 +34,4 @@ jobs:
   #     environment: "staging"
   #   # secrets: inherit
   demo:
-    uses: open-appdev-lab/ansible-collections-ci/.github/workflows/demo.yml@main
+    uses: open-appdev-lab/ansible-collections-ci/.github/workflows/demo.yml@beta

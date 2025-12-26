@@ -36,3 +36,84 @@ Author Information
 ------------------
 
 An optional section for the role authors to include contact information, or a website (HTML is not allowed).
+
+<!-- DOCSIBLE START -->
+## hello_motd
+
+```
+Role belongs to example/demo
+Namespace - example
+Collection - demo
+```
+
+Description: your role description
+
+| Field                | Value           |
+|--------------------- |-----------------|
+| Readme update        | 2025/12/26 |
+
+
+
+
+
+
+### Defaults
+
+**These are static variables with lower priority**
+
+#### File: defaults/main.yml
+
+| Var          | Type         | Value       |Choices    |Required    | Title       |
+|--------------|--------------|-------------|-------------|-------------|-------------|
+| [friend_name](defaults/main.yml#L3)   | str   | `John Doe` |  None  |   None  |  None |
+<summary><b>🖇️ Full descriptions for vars in defaults/main.yml</b></summary>
+<br>
+<b>friend_name:</b> None
+<br>
+<br>
+
+
+
+
+
+### Tasks
+
+
+#### File: tasks/main.yml
+
+| Name | Module | Has Conditions |
+| ---- | ------ | --------- |
+| Generate greeting and store result | demo_hello | False |
+| store test in /etc/motd | copy | False |
+
+
+
+
+## Playbook
+
+```yml
+#SPDX-License-Identifier: MIT-0
+---
+- hosts: localhost
+  remote_user: root
+  roles:
+    - hello_motd
+
+```
+
+
+## Author Information
+your name
+
+#### License
+
+license (GPL-2.0-or-later, MIT, etc)
+
+#### Minimum Ansible Version
+
+2.1
+
+#### Platforms
+
+No platforms specified.
+<!-- DOCSIBLE END -->

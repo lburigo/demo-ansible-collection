@@ -1,6 +1,14 @@
 # CHANGELOG
 
 
+## v1.1.1 (2025-12-26)
+
+### Documentation
+
+- Blah
+  ([`4f228c5`](https://github.com/open-appdev-lab/demo-ansible-collection/commit/4f228c5476098b9345794be73077cafb85993eb7))
+
+
 ## v1.1.0 (2025-12-26)
 
 ### Chores

@@ -63,6 +63,7 @@ jobs:
 
     outputs:
       released: ${{ steps.release.outputs.released || 'false' }}
+
   # run-ansible-lint:
   #   runs-on: ubuntu-latest
   #   steps:

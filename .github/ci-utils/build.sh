@@ -11,18 +11,6 @@ SEMVER_EXTRA_ASSETS=(
 
 PYTHON_DEPENDENCIES="distlib antsibull-changelog docsible"
 
-for dir in $(ls -d roles/*); do
-  echo "Running docsible role generation against ${dir}"
-  if [ -f ${dir}/docsible-role-template.md ]; then
-    DOCSIBLE_TEMPLATE="${dir}/docsible-role-template.md"
-  else
-    DOCSIBLE_TEMPLATE="./.github/ci-utils/docsible-role-template.md"
-  fi
-  docsible --md-template ${DOCSIBLE_TEMPLATE} \
-    --role ${dir} --no-backup --append | tee -a collection-build.log
-  git add ${dir}/README.md
-done
-
 # Install extra python dependencies if defined
 if [ -n "${PYTHON_DEPENDENCIES}" ]; then
   # Set the pip version
@@ -36,6 +24,18 @@ if [ -n "${PYTHON_DEPENDENCIES}" ]; then
   fi
   $PIP_EXEC install ${PYTHON_DEPENDENCIES}
 fi
+
+for dir in $(ls -d roles/*); do
+  echo "Running docsible role generation against ${dir}"
+  if [ -f ${dir}/docsible-role-template.md ]; then
+    DOCSIBLE_TEMPLATE="${dir}/docsible-role-template.md"
+  else
+    DOCSIBLE_TEMPLATE="./.github/ci-utils/docsible-role-template.md"
+  fi
+  docsible --md-template ${DOCSIBLE_TEMPLATE} \
+    --role ${dir} --no-backup --append | tee -a collection-build.log
+  git add ${dir}/README.md
+done
 
 # Run antsibull-changelog release to update changelog and delete fragments
 antsibull-changelog release | tee -a collection-build.log

@@ -1,3 +1,3 @@
-# Ansible Collection - lburigo.example
+# Ansible Collection - example.demo
 
 Documentation for the collection.

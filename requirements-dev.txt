@@ -12,3 +12,4 @@ tox
 packaging < 25.0, >=23.2
 distlib
 galaxy-importer
+python-semantic-release

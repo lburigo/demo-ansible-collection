@@ -1,7 +1,7 @@
 # CHANGELOG
 
 
-## v1.1.4 (2025-12-26)
+## v1.2.0 (2025-12-26)
 
 ### Bug Fixes
 
@@ -16,6 +16,11 @@
 
 - Update pipeline
   ([`759205c`](https://github.com/open-appdev-lab/demo-ansible-collection/commit/759205c7320eaca4a2404e5fea393c01c49a05ba))
+
+### Features
+
+- Extend docs
+  ([`b1985c7`](https://github.com/open-appdev-lab/demo-ansible-collection/commit/b1985c7580455a3d825263f44d1df9765fbc3f05))
 
 
 ## v1.1.3 (2025-12-26)

@@ -1,6 +1,14 @@
 # CHANGELOG
 
 
+## v1.3.5 (2025-12-27)
+
+### Bug Fixes
+
+- Add asset
+  ([`12c74a2`](https://github.com/open-appdev-lab/demo-ansible-collection/commit/12c74a2ba68a39697c37e8f128a8d32e7f1be22d))
+
+
 ## v1.3.4 (2025-12-27)
 
 ### Bug Fixes

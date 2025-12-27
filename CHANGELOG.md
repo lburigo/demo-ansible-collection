@@ -1,6 +1,14 @@
 # CHANGELOG
 
 
+## v1.3.3 (2025-12-27)
+
+### Bug Fixes
+
+- Create release
+  ([`2953bbe`](https://github.com/open-appdev-lab/demo-ansible-collection/commit/2953bbebfc62b87a7a67dd33ee1f1f90b0ed9e79))
+
+
 ## v1.3.2 (2025-12-27)
 
 ### Bug Fixes

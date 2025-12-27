@@ -14,6 +14,9 @@
 - Fix pipeline
   ([`c27f613`](https://github.com/open-appdev-lab/demo-ansible-collection/commit/c27f613b774d92d7166b5c4f23d81b4aa8399ac4))
 
+- Fix pipeline output
+  ([`6addcf4`](https://github.com/open-appdev-lab/demo-ansible-collection/commit/6addcf486b97ebd02de03f3517bb97370c8bc9de))
+
 ### Features
 
 - Major ci change

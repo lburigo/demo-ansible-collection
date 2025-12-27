@@ -33,6 +33,9 @@
 - Pipeline change
   ([`167de6b`](https://github.com/open-appdev-lab/demo-ansible-collection/commit/167de6b7c73565f75db6036f1afa6cb8a75da39d))
 
+- Something extra
+  ([`74ba59c`](https://github.com/open-appdev-lab/demo-ansible-collection/commit/74ba59cdfe0858679f419ae8e962a3f6b11eb9d9))
+
 
 ## v1.2.0 (2025-12-26)
 

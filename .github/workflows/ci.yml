@@ -119,12 +119,12 @@ jobs:
     - name: Resolve release tag
       id: next-version
       run: |
-        NEXT_VERSION="$(semantic-release version --print-tag)" >> $GITHUB_OUTPUT
+        echo "NEXT_VERSION=$(semantic-release version --print-tag)" >> $GITHUB_OUTPUT
       env:
         GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Print next version
-      run: echo "Building collection with version ${{ steps.next-version.outputs.next-version }}"
+      run: echo "Building collection with version ${{ steps.next-version.outputs.NEXT_VERSION }}"
         
     - name: Build Package
       run: |

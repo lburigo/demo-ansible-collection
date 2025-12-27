@@ -122,10 +122,7 @@ jobs:
         echo "NEXT_VERSION=$(semantic-release version --print-tag)" >> $GITHUB_OUTPUT
       env:
         GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-    - name: Print next version
-      run: echo "Building collection with version ${{ steps.next-version.outputs.NEXT_VERSION }}"
-        
+       
     - name: Build collection
       run: |
         semantic-release version
@@ -137,18 +134,3 @@ jobs:
         semantic-release publish
       env:
         GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-    # - name: Upload Build Artifact
-    #   uses: actions/upload-artifact@v4
-    #   with:
-    #     name: ansible-collection
-    #     path: example-demo-${{steps.next-version.outputs.NEXT_VERSION}}.tar.gz
-    #     retention-days: 5
-
-    # - name: Release
-    #   uses: softprops/action-gh-release@v2
-    #   # if: github.ref_type == 'tag'
-    #   with:
-    #     tag_name: ${{steps.next-version.outputs.NEXT_VERSION}}
-    #     files: |
-    #       example-demo-${{steps.next-version.outputs.NEXT_VERSION}}.tar.gz

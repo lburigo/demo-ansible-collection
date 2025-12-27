@@ -1,6 +1,14 @@
 # CHANGELOG
 
 
+## v1.3.1 (2025-12-27)
+
+### Bug Fixes
+
+- Remote files from build
+  ([`e5636c5`](https://github.com/open-appdev-lab/demo-ansible-collection/commit/e5636c54023140678ebcdf80d2409e85313e9424))
+
+
 ## v1.3.0 (2025-12-27)
 
 ### Bug Fixes

@@ -1,6 +1,25 @@
 # CHANGELOG
 
 
+## v1.3.0 (2025-12-27)
+
+### Bug Fixes
+
+- Add write permission
+  ([`84c20d9`](https://github.com/open-appdev-lab/demo-ansible-collection/commit/84c20d91d4e676baf4fff267bff87adc911cd29c))
+
+- Fix pipeline
+  ([`c27f613`](https://github.com/open-appdev-lab/demo-ansible-collection/commit/c27f613b774d92d7166b5c4f23d81b4aa8399ac4))
+
+### Features
+
+- Major ci change
+  ([`34955f7`](https://github.com/open-appdev-lab/demo-ansible-collection/commit/34955f7b97c2ef0ad5643d2b43ec42af37da5ebc))
+
+- Pipeline change
+  ([`167de6b`](https://github.com/open-appdev-lab/demo-ansible-collection/commit/167de6b7c73565f75db6036f1afa6cb8a75da39d))
+
+
 ## v1.2.0 (2025-12-26)
 
 ### Bug Fixes

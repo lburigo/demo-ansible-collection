@@ -17,6 +17,11 @@
 - Fix pipeline output
   ([`6addcf4`](https://github.com/open-appdev-lab/demo-ansible-collection/commit/6addcf486b97ebd02de03f3517bb97370c8bc9de))
 
+### Documentation
+
+- Change README
+  ([`9236736`](https://github.com/open-appdev-lab/demo-ansible-collection/commit/92367361019147b96fe0eab9fd2d2a93f3e05333))
+
 ### Features
 
 - Major ci change

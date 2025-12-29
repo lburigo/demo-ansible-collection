@@ -122,7 +122,12 @@ jobs:
         echo "NEXT_VERSION=$(semantic-release version --print-tag)" >> $GITHUB_OUTPUT
       env:
         GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-       
+
+    - name: Run Tox
+      id: tests
+      run: |
+        tox
+
     - name: Build collection
       run: |
         semantic-release version

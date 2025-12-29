@@ -1,0 +1,12 @@
+---
+# TODO: Write integration tests and remove this one.
+# Filter plugins were removed.
+
+- name: Test the hello_motd role
+  ansible.builtin.set_fact:
+    msg: "{{ 'ansible-creator' }}"
+
+- name: Assert that it worked
+  ansible.builtin.assert:
+    that:
+      - msg == 'ansible-creator'

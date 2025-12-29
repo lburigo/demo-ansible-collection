@@ -3,3 +3,4 @@ python-semantic-release
 antsibull-changelog
 docsible
 tox
+sarif-tools

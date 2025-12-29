@@ -111,30 +111,115 @@ jobs:
         python-version: '3.13'
         cache: 'pip'
 
-    - name: Install dependencies
+    - name: Secrets | custom_secret_detection
+      id: custom_secret_detection
+      run: |
+        echo "TODO"
+    - name: Prepare | install-dependencies
+      id: install-dependencies
       run: |
         python -m pip install --upgrade pip
         if [ -f requirements-ci.txt ]; then pip install -r requirements-ci.txt; fi
+        if [ -f test-requirements.txt ]; then pip install -r test-requirements.txt; fi
 
-    - name: Resolve release tag
-      id: next-version
+    - name: Prepare | job-semver-next
+      id: job-semver-next
       run: |
         echo "NEXT_VERSION=$(semantic-release version --print-tag)" >> $GITHUB_OUTPUT
       env:
         GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-    - name: Run Tox
-      id: tests
+    - name: Prepare | job-ansible-validate-tokens
+      id: job-ansible-validate-tokens
       run: |
-        tox
+        echo "TODO"
 
-    - name: Build collection
+    - name: Prepare | job-ansible-collection-install
+      id: job-ansible-collection-install
+      run: |
+        echo "TODO"
+
+    - name: Test | secret_detection
+      id: secret_detection
+      run: |
+        echo "TODO"
+    - name: Test | automation-hub-verify-ansible-lint (1/2)
+      id: automation-hub-verify-ansible-lint
+      env:
+        SARIF_REPORT_FULL_PATH: "./gl-code-quality-report.sarif"
+        LINT_ARGS: "--profile production"
+      run: |
+        if [[ "["tests/integration/", "tests/unit"]" != "" ]]; then
+          FLAG=" --exclude"
+          EXCLUDE_ARGS=$(echo '["tests/integration/", "tests/unit"]' | tr -d '[],"')
+          set -- $EXCLUDE_ARGS
+          for item in "$@"; do
+            LINT_ARGS+=" $FLAG $item"
+          done
+        fi
+        echo $LINT_ARGS
+        if true ; then LINT_ARGS+=" --parseable"; fi
+        if true ; then LINT_ARGS+=" --force-color"; fi
+        if false ; then LINT_ARGS+=" --offline"; fi
+        if true ; then LINT_ARGS+=" --strict"; fi
+        if true ; then LINT_ARGS+=" --sarif-file ${SARIF_REPORT_FULL_PATH}"; fi
+        ansible-lint --version
+        echo "Running ansible-lint with the following parameters"
+        echo "${LINT_ARGS}"
+        echo "Switch directories to project directory ."
+        cd .
+        ansible-lint ${LINT_ARGS} || RETURN=$?
+        if true && ! [ -f ${SARIF_REPORT_FULL_PATH} ] ; then
+          echo "Code quality sarif report was request but not generated, please check the logs."
+          RETURN=1${RETURN}
+        fi
+        |-
+        if [[ 0 == $RETURN ]]; then
+          echo "Return code $RETURN matches expected return"
+          exit 0
+        fi
+        exit $RETURN
+
+    - name: Test | automation-hub-verify-ansible-lint (2/2)
+      uses: actions/upload-artifact@v4
+      with:
+        name: automation-hub-verify-ansible-lint
+        path: gl-code-quality-report.sarif
+        if-no-files-found: error
+
+    - name: Test | job-ansible-tox-sanity
+      id: job-ansible-tox-sanity
+      run: |
+        tox --verbose --listenvs-all
+        tox
+    - name: Test | job-ansible-tox-integration
+      id: job-ansible-tox-integration
+      run: |
+        tox --ansible --conf tox-ansible.ini list
+        tox --ansible --conf tox-ansible.ini
+    - name: Report | job-ansible-codeclimate (1/2)
+      id: job-ansible-codeclimate
+      env:
+        SARIF_REPORT_FULL_PATH: "./gl-code-quality-report.sarif"
+      run: |
+        semantic-release version
+        if [[ -f ${SARIF_FILE_PATH}.sarif ]]; then sarif codeclimate ${SARIF_FILE_PATH}.sarif || RETURN=$?; else echo "ERROR - File not found ${SARIF_FILE_PATH}.sarif"; exit 1; fi
+        if [[ 0 == $RETURN ]]; then echo "Return code $RETURN matches expected return"; exit 0; fi
+        exit $RETURN
+    - name: Report | job-ansible-codeclimate  (2/2)
+      uses: actions/upload-artifact@v4
+      with:
+        name: job-ansible-codeclimate
+        path: gl-code-quality-report.json
+        if-no-files-found: error
+    - name: Release | job-semantic_release
+      id: job-semantic_release
       run: |
         semantic-release version
       env:
         GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-    - name: Publish assets
+    - name: Publish | job-github-package-publisher
+      id: job-github-package-publisher
       run: |
         semantic-release publish
       env:

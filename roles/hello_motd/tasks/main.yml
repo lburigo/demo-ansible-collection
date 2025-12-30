@@ -1,12 +1,14 @@
 ---
 # tasks file for hello_motd
 - name: Generate greeting and store result
-  demo_hello:
-    name: "{{ friend_name }}"
+  example.demo.demo_hello:
+    name: "{{ motd_hello_friend_name }}"
   register: demo_greeting
 
-- name: store test in /etc/motd
-  copy:
+- name: Store test in /etc/motd
+  ansible.builtin.copy:
     content: "{{ demo_greeting.fact }}\n"
     dest: /etc/motd
-  become: yes
+    mode: "0644"
+  become: true
+...

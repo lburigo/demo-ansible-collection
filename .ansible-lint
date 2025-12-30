@@ -45,3 +45,4 @@ kinds:
   - yaml: "**/*.yaml-too"
 
 task_name_prefix: "{stem} | "
+...

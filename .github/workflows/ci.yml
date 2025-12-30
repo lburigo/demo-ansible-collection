@@ -156,7 +156,6 @@ jobs:
             LINT_ARGS+=" $FLAG $item"
           done
         fi
-        echo $LINT_ARGS
         if true ; then LINT_ARGS+=" --parseable"; fi
         if true ; then LINT_ARGS+=" --force-color"; fi
         if false ; then LINT_ARGS+=" --offline"; fi
@@ -172,7 +171,6 @@ jobs:
           echo "Code quality sarif report was request but not generated, please check the logs."
           RETURN=1${RETURN}
         fi
-        |-
         if [[ 0 == $RETURN ]]; then
           echo "Return code $RETURN matches expected return"
           exit 0

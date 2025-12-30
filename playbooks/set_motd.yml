@@ -9,3 +9,4 @@
         name: example.demo.hello_motd
       vars:
         friend_name: "GitHub Action"
+...

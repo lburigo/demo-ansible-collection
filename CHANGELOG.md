@@ -1,6 +1,35 @@
 # CHANGELOG
 
 
+## v1.4.1 (2025-12-30)
+
+### Bug Fixes
+
+- Add linting script
+  ([`68c0d4b`](https://github.com/open-appdev-lab/demo-ansible-collection/commit/68c0d4bb5a5752644a1f9acec637fc62773e5abd))
+
+- Add test and report jobs
+  ([`317d31d`](https://github.com/open-appdev-lab/demo-ansible-collection/commit/317d31de19eb829963df01fe50f4aff8e077dc05))
+
+- Add tox step
+  ([`91c5a34`](https://github.com/open-appdev-lab/demo-ansible-collection/commit/91c5a342dc10e6c20d91639682c59637c013826a))
+
+- Correct linting issues
+  ([`e2f386e`](https://github.com/open-appdev-lab/demo-ansible-collection/commit/e2f386e2a21aa5df95815d353dfd02aff756102e))
+
+- Correct linting issues
+  ([`428be9a`](https://github.com/open-appdev-lab/demo-ansible-collection/commit/428be9adc3fabd2c545298f94bccb1e268114e27))
+
+- Fix one file
+  ([`80634a2`](https://github.com/open-appdev-lab/demo-ansible-collection/commit/80634a26ff267ff5b459bacab6914d89b1cebaa9))
+
+- Fix one file
+  ([`a8e332f`](https://github.com/open-appdev-lab/demo-ansible-collection/commit/a8e332fac1c82190cf4ec111c7062707ef3c420b))
+
+- Fix tox integration tests
+  ([`90f7973`](https://github.com/open-appdev-lab/demo-ansible-collection/commit/90f79731ceafd9a75cc2abbc66b1bdb37fabeb0d))
+
+
 ## v1.4.0 (2025-12-27)
 
 ### Features

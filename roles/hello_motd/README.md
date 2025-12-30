@@ -45,7 +45,7 @@ Namespace - example
 Collection - demo
 ```
 
-Description: your role description
+Description: example role
 
 | Field                | Value           |
 |--------------------- |-----------------|
@@ -64,10 +64,10 @@ Description: your role description
 
 | Var          | Type         | Value       |Choices    |Required    | Title       |
 |--------------|--------------|-------------|-------------|-------------|-------------|
-| [friend_name](defaults/main.yml#L3)   | str   | `John Doe` |  None  |   None  |  None |
+| [hello_motd_friend_name](defaults/main.yml#L3)   | str   | `John Doe` |  None  |   None  |  None |
 <summary><b>🖇️ Full descriptions for vars in defaults/main.yml</b></summary>
 <br>
-<b>friend_name:</b> None
+<b>hello_motd_friend_name:</b> None
 <br>
 <br>
 
@@ -82,8 +82,8 @@ Description: your role description
 
 | Name | Module | Has Conditions |
 | ---- | ------ | --------- |
-| Generate greeting and store result | demo_hello | False |
-| store test in /etc/motd | copy | False |
+| Generate greeting and store result | ansible.builtin.set_fact | False |
+| Store greeting in /tmp/motd | ansible.builtin.copy | False |
 
 
 
@@ -91,22 +91,24 @@ Description: your role description
 ## Playbook
 
 ```yml
-#SPDX-License-Identifier: MIT-0
+# SPDX-License-Identifier: MIT-0
 ---
-- hosts: localhost
+- name: Test MOTD role
+  hosts: localhost
   remote_user: root
   roles:
     - hello_motd
+...
 
 ```
 
 
 ## Author Information
-your name
+Lucas Burigo
 
 #### License
 
-license (GPL-2.0-or-later, MIT, etc)
+MIT
 
 #### Minimum Ansible Version
 

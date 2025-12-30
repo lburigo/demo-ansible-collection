@@ -1,6 +1,17 @@
 # CHANGELOG
 
 
+## v1.4.2 (2025-12-30)
+
+### Bug Fixes
+
+- Fix codeclimate step
+  ([`93b4718`](https://github.com/open-appdev-lab/demo-ansible-collection/commit/93b47186a5beb1b0700fd841516c8f6878fb8094))
+
+- Fix codeclimate step
+  ([`c9a9515`](https://github.com/open-appdev-lab/demo-ansible-collection/commit/c9a9515ced40864da7a137a88ae12e8b02d3e0b1))
+
+
 ## v1.4.1 (2025-12-30)
 
 ### Bug Fixes

@@ -199,7 +199,7 @@ jobs:
       env:
         SARIF_REPORT_FULL_PATH: "./gl-code-quality-report.sarif"
       run: |
-        if [[ -f ${SARIF_FILE_PATH}.sarif ]]; then sarif codeclimate ${SARIF_FILE_PATH}.sarif || RETURN=$?; else echo "ERROR - File not found ${SARIF_FILE_PATH}.sarif"; exit 1; fi
+        if [[ -f ${SARIF_REPORT_FULL_PATH} ]]; then sarif codeclimate ${SARIF_REPORT_FULL_PATH} || RETURN=$?; else echo "ERROR - File not found ${SARIF_REPORT_FULL_PATH}"; exit 1; fi
         if [[ 0 == $RETURN ]]; then echo "Return code $RETURN matches expected return"; exit 0; fi
         exit $RETURN
     - name: Report | job-ansible-codeclimate  (2/2)
@@ -215,9 +215,13 @@ jobs:
       env:
         GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-    - name: Publish | job-github-package-publisher
-      id: job-github-package-publisher
+    - name: Publish | job-package-publisher-github
+      id: job-package-publisher-github
       run: |
         semantic-release publish
       env:
         GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - name: Publish | job-package-publisher-rh-automation-hub
+      id: job-package-publisher-rh-automation-hub
+      run: |
+        echo "TODO"

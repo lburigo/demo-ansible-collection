@@ -168,7 +168,7 @@ jobs:
         cd .
         ansible-lint ${LINT_ARGS} || RETURN=$?
         if true && ! [ -f ${SARIF_REPORT_FULL_PATH} ] ; then
-          echo "Code quality sarif report was request but not generated, please check the logs."
+          echo "Code quality sarif report was requested but not generated, please check the logs."
           RETURN=1${RETURN}
         fi
         if [[ 0 == $RETURN ]]; then

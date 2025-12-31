@@ -29,9 +29,8 @@ jobs:
         which python
         echo "PATH: $PATH"
         echo "ENV: $(env)"
-        echo "$(ls /opt/)"
-        echo "$(ls /opt/venv)"
-        echo "$(ls /opt/venv/bin/)"
+        echo "$(ls /opt-venv)"
+        echo "$(ls /opt-venv/bin/)"
 
     - name: Prepare | job-semver-next
       id: job-semver-next

@@ -112,11 +112,15 @@ jobs:
     uses: ./.github/workflows/_report-stage.yml
 
   release:
+    permissions:
+      contents: write
     if: github.ref == 'refs/heads/main'
     needs: report
     uses: ./.github/workflows/_release-stage.yml
 
   publish:
+    permissions:
+      contents: write
     if: github.ref == 'refs/heads/main'
     needs: release
     uses: ./.github/workflows/_publish-stage.yml

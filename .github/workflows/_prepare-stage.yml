@@ -24,13 +24,11 @@ jobs:
         echo "Working dir: $(pwd)"
         echo "PATH: $PATH"
         echo "ENV: $(env)"
-        echo "$(ls /opt)"
-        echo "$(ls /opt/venv)"
-        echo "$(ls /opt/venv/bin/)"
-        echo "Checking /opt:"
-        ls -d /opt/*
-        echo "Checking /opt/venv (if it exists):"
-        ls -la /opt/venv || echo "/opt/venv not found"
+        echo "$(ls /venv)"
+        echo "Checking /venv:"
+        echo "Checking /venv (if it exists):"
+        ls -la /venv || echo "/venv not found"
+        ls -d /venv/*
     - name: Prepare | job-semver-next
       id: job-semver-next
       run: |

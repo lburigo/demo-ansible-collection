@@ -139,19 +139,19 @@ jobs:
     uses: ./.github/workflows/_secrets-stage.yml
 
   prepare:
-    needs: secrets
+    needs: [ secrets, setup-environment ]
     uses: ./.github/workflows/_prepare-stage.yml
     with:
       image: ${{ needs.setup-environment.outputs.image_tag }}
 
   test:
-    needs: prepare
+    needs: [ prepare, setup-environment ]
     uses: ./.github/workflows/_test-stage.yml
     with:
       image: ${{ needs.setup-environment.outputs.image_tag }}
 
   report:
-    needs: test
+    needs: [ test, setup-environment ]
     uses: ./.github/workflows/_report-stage.yml
     with:
       image: ${{ needs.setup-environment.outputs.image_tag }}
@@ -160,7 +160,7 @@ jobs:
     permissions:
       contents: write
     if: github.ref == 'refs/heads/main'
-    needs: report
+    needs: [ report, setup-environment ]
     uses: ./.github/workflows/_release-stage.yml
     with:
       image: ${{ needs.setup-environment.outputs.image_tag }}
@@ -169,7 +169,7 @@ jobs:
     permissions:
       contents: write
     if: github.ref == 'refs/heads/main'
-    needs: release
+    needs: [ release, setup-environment ]
     uses: ./.github/workflows/_publish-stage.yml
     with:
       image: ${{ needs.setup-environment.outputs.image_tag }}

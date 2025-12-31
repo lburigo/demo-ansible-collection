@@ -17,6 +17,20 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
+    - name: Environment Debug before
+      run: |
+        which python
+        echo "Current user: $(whoami)"
+        echo "Working dir: $(pwd)"
+        echo "PATH: $PATH"
+        echo "ENV: $(env)"
+    - name: Environment Debug after
+      run: |
+        which python
+        echo "PATH: $PATH"
+        echo "ENV: $(env)"
+      env:
+        PATH: "/opt/app-root/bin:/opt/app-root/src/bin:/opt/app-root/src/.local/bin"
     - name: Prepare | job-semver-next
       id: job-semver-next
       run: |

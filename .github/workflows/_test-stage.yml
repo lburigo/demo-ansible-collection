@@ -34,14 +34,13 @@ jobs:
         username: ${{ github.actor }}
         password: ${{ secrets.GITHUB_TOKEN }}
     steps:
-    # - uses: actions/checkout@v4
+    - uses: actions/checkout@v4
 
     - name: Test | automation-hub-verify-ansible-lint (1/2)
       id: automation-hub-verify-ansible-lint
       env:
         SARIF_REPORT_FULL_PATH: "./code-quality-report.sarif"
         LINT_ARGS: "--profile production"
-        # PATH: "/opt/app-root/bin:/opt/app-root/src/bin:/opt/app-root/src/.local/bin"
       run: |
         if [[ "["tests/integration/", "tests/unit"]" != "" ]]; then
           FLAG=" --exclude"
@@ -88,12 +87,10 @@ jobs:
         username: ${{ github.actor }}
         password: ${{ secrets.GITHUB_TOKEN }}
     steps:
-    # - uses: actions/checkout@v4
+    - uses: actions/checkout@v4
 
     - name: Test | job-ansible-tox-sanity
       id: job-ansible-tox-sanity
-      # env:
-      #   PATH: "/opt/app-root/bin:/opt/app-root/src/bin:/opt/app-root/src/.local/bin"
       run: |
         tox --verbose --listenvs-all
         tox
@@ -105,12 +102,10 @@ jobs:
         username: ${{ github.actor }}
         password: ${{ secrets.GITHUB_TOKEN }}
     steps:
-    # - uses: actions/checkout@v4
+    - uses: actions/checkout@v4
 
     - name: Test | job-ansible-tox-integration
       id: job-ansible-tox-integration
-      # env:
-      #   PATH: "/opt/app-root/bin:/opt/app-root/src/bin:/opt/app-root/src/.local/bin"
       run: |
         tox --ansible --conf tox-ansible.ini list
         tox --ansible --conf tox-ansible.ini

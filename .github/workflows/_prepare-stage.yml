@@ -10,14 +10,14 @@ jobs:
   job-semver-next:
     runs-on: ubuntu-latest
     container:
-      # image: ${{ inputs.image }}
+      image: ${{ inputs.image }}
       #image: ghcr.io/open-appdev-lab/demo-ansible-collection/ci-python-env:sha-bcdd6f4f2323580242eca09167aa55d78a6e7877
-      image: ghcr.io/open-appdev-lab/demo-ansible-collection/ci-python-env:sha-68996c4112a0e11d4da6b0fac7bfcdb20417aa94
+      # image: ghcr.io/open-appdev-lab/demo-ansible-collection/ci-python-env:sha-68996c4112a0e11d4da6b0fac7bfcdb20417aa94
       credentials:
         username: ${{ github.actor }}
         password: ${{ secrets.GITHUB_TOKEN }}
     steps:
-    # - uses: actions/checkout@v4
+    - uses: actions/checkout@v4
 
     - name: Environment Debug
       run: |

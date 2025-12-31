@@ -96,20 +96,60 @@ permissions:
 
 
 jobs:
+  setup-environment:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write # Required to push to GHCR
+    outputs:
+      image_tag: ${{ steps.meta.outputs.tags }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Log in to GHCR
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Extract metadata (tags, labels) for Docker
+        id: meta
+        uses: docker/metadata-action@v5
+        with:
+          images: ghcr.io/${{ github.repository }}/ci-python-env
+          tags: type=sha,format=long # Uses the commit SHA as the version
+
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          # Speed up subsequent builds by caching layers in GHCR
+          cache-from: type=gha 
+          cache-to: type=gha,mode=max
+
   secrets:
     uses: ./.github/workflows/_secrets-stage.yml
 
   prepare:
     needs: secrets
     uses: ./.github/workflows/_prepare-stage.yml
+    with:
+      image: ${{ needs.setup-environment.outputs.image_tag }}
 
   test:
     needs: prepare
     uses: ./.github/workflows/_test-stage.yml
+    with:
+      image: ${{ needs.setup-environment.outputs.image_tag }}
 
   report:
     needs: test
     uses: ./.github/workflows/_report-stage.yml
+    with:
+      image: ${{ needs.setup-environment.outputs.image_tag }}
 
   release:
     permissions:
@@ -117,6 +157,8 @@ jobs:
     if: github.ref == 'refs/heads/main'
     needs: report
     uses: ./.github/workflows/_release-stage.yml
+    with:
+      image: ${{ needs.setup-environment.outputs.image_tag }}
 
   publish:
     permissions:
@@ -124,6 +166,8 @@ jobs:
     if: github.ref == 'refs/heads/main'
     needs: release
     uses: ./.github/workflows/_publish-stage.yml
+    with:
+      image: ${{ needs.setup-environment.outputs.image_tag }}
     # Binds this job to the 'production' environment settings
     # environment: 
     #   name: production

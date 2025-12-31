@@ -32,15 +32,13 @@ jobs:
         echo "$(ls /opt/)"
         echo "$(ls /opt/venv)"
         echo "$(ls /opt/venv/bin/)"
-      # env:
-      #   PATH: "/opt/app-root/bin:/opt/app-root/src/bin:/opt/app-root/src/.local/bin"
+
     - name: Prepare | job-semver-next
       id: job-semver-next
       run: |
         echo "NEXT_VERSION=$(semantic-release version --print-tag)" >> $GITHUB_OUTPUT
       env:
         GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        PATH: "/opt/app-root/bin:/opt/app-root/src/bin:/opt/app-root/src/.local/bin"
 
   job-ansible-validate-tokens:
     runs-on: ubuntu-latest

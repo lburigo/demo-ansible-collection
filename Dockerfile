@@ -21,9 +21,7 @@ RUN INSTALL_PKGS="gcc python3 python3-devel glibc-langpack-en" && \
 #   installation.
 RUN \
     python3 -m venv ${VIRTUAL_ENV} && \
-    chown -R 1001:0 ${VIRTUAL_ENV}
-
-USER 1001
+    source ${VIRTUAL_ENV}/bin/activate
 
 COPY requirements-ci.txt .
 COPY test-requirements.txt .

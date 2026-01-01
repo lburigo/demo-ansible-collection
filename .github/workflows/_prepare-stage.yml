@@ -17,18 +17,6 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
-    - name: Environment Debug
-      run: |
-        which python
-        echo "Current user: $(whoami)"
-        echo "Working dir: $(pwd)"
-        echo "PATH: $PATH"
-        echo "ENV: $(env)"
-        echo "$(ls /opt/app-root)"
-        echo "Checking /opt/app-root:"
-        echo "Checking /opt/app-root (if it exists):"
-        ls -la /opt/app-root || echo "/opt/app-root not found"
-        ls -d /opt/app-root/*
     - name: Prepare | job-semver-next
       id: job-semver-next
       run: |
@@ -45,7 +33,7 @@ jobs:
         username: ${{ github.actor }}
         password: ${{ secrets.GITHUB_TOKEN }}
     steps:
-    - uses: actions/checkout@v4
+    # - uses: actions/checkout@v4
 
     - name: Prepare | job-ansible-validate-tokens
       id: job-ansible-validate-tokens
@@ -81,13 +69,10 @@ jobs:
     - name: Prepare | job-ansible-collection-install
       id: job-ansible-collection-install
       run: |
-        echo "TODO"
-    # - ANSIBLE_COLLECTIONS_PATH=.ansible/collections
-    # - ansible-galaxy collection install --force -p .ansible/collections -r requirements-dev.yml
-    #   || RETURN=$?
-    # - |-
-    #   if [[ 0 == $RETURN ]]; then
-    #     echo "Return code $RETURN matches expected return"
-    #     exit 0
-    #   fi
-    # - exit $RETURN
+        ANSIBLE_COLLECTIONS_PATH=.ansible/collections
+        ansible-galaxy collection install --force -p .ansible/collections -r requirements-dev.yml || RETURN=$?
+        if [[ 0 == $RETURN ]]; then
+          echo "Return code $RETURN matches expected return"
+          exit 0
+        fi
+        exit $RETURN

@@ -159,6 +159,7 @@ jobs:
   release:
     permissions:
       contents: write
+      packages: read
     if: github.ref == 'refs/heads/main'
     needs: [ report, setup-environment ]
     uses: ./.github/workflows/_release-stage.yml
@@ -168,6 +169,7 @@ jobs:
   publish:
     permissions:
       contents: write
+      packages: read
     if: github.ref == 'refs/heads/main'
     needs: [ release, setup-environment ]
     uses: ./.github/workflows/_publish-stage.yml

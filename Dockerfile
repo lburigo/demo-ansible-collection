@@ -26,13 +26,12 @@ WORKDIR ${HOME}
 #   potential conflicts with Python packages preinstalled in the main Python
 #   installation.
 RUN \
-    python3 -m venv ${APP_ROOT} && \
-    chown -R 1001:0 ${APP_ROOT}
-
-USER 1001
+    python3 -m venv ${APP_ROOT}
 
 COPY requirements-ci.txt .
 COPY test-requirements.txt .
 
 RUN pip install --no-cache-dir -r requirements-ci.txt
 RUN pip install --no-cache-dir -r test-requirements.txt
+
+# GitHub actions should run as root user

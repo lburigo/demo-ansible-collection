@@ -27,3 +27,5 @@ releases:
     release_date: '2025-12-30'
   1.7.0:
     release_date: '2025-12-31'
+  1.8.0:
+    release_date: '2026-01-01'

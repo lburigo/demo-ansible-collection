@@ -1,6 +1,109 @@
 # CHANGELOG
 
 
+## v1.8.0 (2026-01-01)
+
+### Bug Fixes
+
+- Add checkout
+  ([`c4384c4`](https://github.com/open-appdev-lab/demo-ansible-collection/commit/c4384c4ceafa67bc4a553799202a520f6f237955))
+
+- Add debug
+  ([`3ff1e32`](https://github.com/open-appdev-lab/demo-ansible-collection/commit/3ff1e32aad60e35b6a26f50f51f54094f530c4c3))
+
+- Add debugging
+  ([`80cf117`](https://github.com/open-appdev-lab/demo-ansible-collection/commit/80cf1176f4c8b1e9ddb905da93db94f51ae46006))
+
+- Add debugging
+  ([`2f8dd71`](https://github.com/open-appdev-lab/demo-ansible-collection/commit/2f8dd713e454f10fea8437bb9f50f276350fb9cc))
+
+- Add debugging
+  ([`646f767`](https://github.com/open-appdev-lab/demo-ansible-collection/commit/646f767120ee34cbb5884d1ed3c93d164269b420))
+
+- Add packages read
+  ([`2bd5fd3`](https://github.com/open-appdev-lab/demo-ansible-collection/commit/2bd5fd3d4fc32e8a399b353b0ec142b54dcdec1a))
+
+- Attempt to fix tests
+  ([`68996c4`](https://github.com/open-appdev-lab/demo-ansible-collection/commit/68996c4112a0e11d4da6b0fac7bfcdb20417aa94))
+
+- Change dockerfile
+  ([`c9dc420`](https://github.com/open-appdev-lab/demo-ansible-collection/commit/c9dc420c7d5304b0096d87165e3d53eaac0bf04d))
+
+- Cleanup
+  ([`d19d826`](https://github.com/open-appdev-lab/demo-ansible-collection/commit/d19d826719de885b1f526d430d89b50baea76c5e))
+
+- Fix
+  ([`79f4cc8`](https://github.com/open-appdev-lab/demo-ansible-collection/commit/79f4cc807790bb1f22e51da5b35196460577dda0))
+
+- Fix again
+  ([`8c651d4`](https://github.com/open-appdev-lab/demo-ansible-collection/commit/8c651d4d22145c635754d236d616dc2faa0903de))
+
+- Fix docker file
+  ([`bcdd6f4`](https://github.com/open-appdev-lab/demo-ansible-collection/commit/bcdd6f4f2323580242eca09167aa55d78a6e7877))
+
+- Fix dockerfile
+  ([`d1bd752`](https://github.com/open-appdev-lab/demo-ansible-collection/commit/d1bd752f9343b61847431743e0d34732d190a312))
+
+- Fix env
+  ([`07957ef`](https://github.com/open-appdev-lab/demo-ansible-collection/commit/07957efbcba1b9b0e7ffce9273330619f784770f))
+
+- Fix env
+  ([`eaff3cb`](https://github.com/open-appdev-lab/demo-ansible-collection/commit/eaff3cb96077f325d5eba358ff82f24c9f45dc01))
+
+- Fix image
+  ([`2ee9c1a`](https://github.com/open-appdev-lab/demo-ansible-collection/commit/2ee9c1a1d058fd5f80878ea1107f93f85c584b75))
+
+- Fix images
+  ([`8641104`](https://github.com/open-appdev-lab/demo-ansible-collection/commit/86411041720945420edaca080170022cba647a15))
+
+- Fix output
+  ([`ba40bf6`](https://github.com/open-appdev-lab/demo-ansible-collection/commit/ba40bf6ac169b653736fa4bff9f4058667b974a5))
+
+- Fix path
+  ([`42a2c82`](https://github.com/open-appdev-lab/demo-ansible-collection/commit/42a2c8257bfa8c20598779061963c23f36a879eb))
+
+- Fix path
+  ([`601f913`](https://github.com/open-appdev-lab/demo-ansible-collection/commit/601f9133c06385dbe20cb62dc4da8fc2a6e2a4ae))
+
+- Fix permissions
+  ([`5fd86bb`](https://github.com/open-appdev-lab/demo-ansible-collection/commit/5fd86bbf4454e79f50ae3e628995dc03a3b65fed))
+
+- Fix pipeline
+  ([`da16d8d`](https://github.com/open-appdev-lab/demo-ansible-collection/commit/da16d8db7264b61139505deda09305acce6f3cf3))
+
+- Image
+  ([`8b1162e`](https://github.com/open-appdev-lab/demo-ansible-collection/commit/8b1162e8a637cc293022fa6b70b37400a87be2fd))
+
+- Remove checkout
+  ([`b635e2d`](https://github.com/open-appdev-lab/demo-ansible-collection/commit/b635e2daa49d7c5ee87338ce3f2c774f9acee857))
+
+- Remove env
+  ([`fc25d3e`](https://github.com/open-appdev-lab/demo-ansible-collection/commit/fc25d3e4734c6d8aa497f436ddd061b03970252f))
+
+- Revert image
+  ([`864c8e9`](https://github.com/open-appdev-lab/demo-ansible-collection/commit/864c8e935bcdb4a05959aed979921e866cd0405c))
+
+- Show env
+  ([`fa9c626`](https://github.com/open-appdev-lab/demo-ansible-collection/commit/fa9c6261497b3fa02ce326fe7990e27b5963b2d8))
+
+- Show files
+  ([`51309bb`](https://github.com/open-appdev-lab/demo-ansible-collection/commit/51309bb0539a9d50981471148e738cb6a22f1b27))
+
+- Show files2
+  ([`f3b545e`](https://github.com/open-appdev-lab/demo-ansible-collection/commit/f3b545e06045166a87b47bed4caafdb84a98d353))
+
+- Show PATH
+  ([`14b3b18`](https://github.com/open-appdev-lab/demo-ansible-collection/commit/14b3b18e80316de48406419b0234160f3a817492))
+
+### Features
+
+- Fixes in image and git context
+  ([`0c7a116`](https://github.com/open-appdev-lab/demo-ansible-collection/commit/0c7a1162d02e7b4806fe8c409ff26b994cf62e46))
+
+- Refactor workflow
+  ([`fcf998f`](https://github.com/open-appdev-lab/demo-ansible-collection/commit/fcf998fe5fb21cb3c2a360e8982c22822fd80eac))
+
+
 ## v1.7.0 (2025-12-31)
 
 ### Bug Fixes

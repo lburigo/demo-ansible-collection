@@ -1,6 +1,20 @@
 # CHANGELOG
 
 
+## v1.9.1 (2026-01-02)
+
+### Bug Fixes
+
+- Add debug
+  ([`ab73aee`](https://github.com/open-appdev-lab/demo-ansible-collection/commit/ab73aeea41f52993e95a92e619ec399d774781b2))
+
+- Add installed collections
+  ([`3d9c89a`](https://github.com/open-appdev-lab/demo-ansible-collection/commit/3d9c89a17befe6f65b4428aa3dcb8d9fb482c406))
+
+- Correct download of .ansible
+  ([`555ad95`](https://github.com/open-appdev-lab/demo-ansible-collection/commit/555ad9533d40dacae89b0bec750b788647cd7021))
+
+
 ## v1.9.0 (2026-01-01)
 
 ### Features

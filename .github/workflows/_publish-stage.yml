@@ -6,6 +6,16 @@ on:
       image:
         required: true
         type: string
+      automation_hub_url:
+        required: false
+        type: string
+        default: 'https://console.redhat.com/api/automation-hub/'
+        description: 'The API URL for the Automation Hub'
+        
+    secrets:
+      automation_hub_token:
+        required: true
+        description: 'The Authentication Token for the Hub'
 
 jobs:
   job-package-publisher-github:
@@ -34,37 +44,12 @@ jobs:
     steps:
     - name: Publish | job-package-publisher-rh-automation-hub
       id: job-package-publisher-rh-automation-hub
+      env:
+        AUTOMATION_HUB_URL: ${{ vars.HUB_URL || 'https://console.redhat.com/api/automation-hub/' }}
+        AUTOMATION_HUB_TOKEN: ${{ secrets.AUTOMATION_HUB_TOKEN }}
       run: |
-        echo "TODO"
-
-  # variables:
-  #   FILE_PATH_NAME: $[[ inputs.needs-file-path-name ]]
-  #   PACKAGE_VERSION: $[[ inputs.needs-package-version ]]
-  #   PROJECT_ID: $[[ inputs.opt-project-id ]]
-  #   PACKAGE_NAME: $[[ inputs.opt-package-name ]]
-  #   TOKEN_TYPE: $[[ inputs.opt-token-type ]]
-  #   TOKEN_VALUE: $[[ inputs.opt-token-value ]]
-  # script:
-  #   - |-
-  #     if [[ "${PACKAGE_VERSION}" == "" ]]; then
-  #       PACKAGE_VERSION=$(date +%Y-%m-%d-%H-%M-%S);
-  #     fi
-  #   - echo "File Path and Name=${FILE_PATH_NAME}"
-  #   - echo "Package Name=${PACKAGE_NAME} Package Version=${PACKAGE_VERSION} Project ID=${PROJECT_ID}"
-  #   - ls
-  #   - FILEPATH=$(dirname ${FILE_PATH_NAME} | head -1)
-  #   - ls ${FILEPATH}
-  #   - |-
-  #     if [ $(ls ${FILE_PATH_NAME} | wc -l) -gt 0 ]; then
-  #       for FILE in ${FILE_PATH_NAME}; do
-  #         echo -e "\nFile path/name=${FILE}";
-  #         FILE_NAME=$(basename ${FILE})
-  #         curl --fail-with-body --location \
-  #           --header "${TOKEN_TYPE}: ${TOKEN_VALUE}" \
-  #           --upload-file ${FILE} \
-  #           "${CI_API_V4_URL}/projects/${PROJECT_ID}/packages/generic/${PACKAGE_NAME}/${PACKAGE_VERSION}/${FILE_NAME}";
-  #       done;
-  #     else
-  #       echo "ERROR: Expected at least one file to match ${FILE_PATH_NAME}";
-  #       exit 1;
-  #     fi
+        ./.github/ci-utils/build.sh
+        ls *.tar.gz
+        ansible-galaxy collection publish ./*.tar.gz \
+        --server "$AUTOMATION_HUB_URL" \
+        --token "$AUTOMATION_HUB_TOKEN"

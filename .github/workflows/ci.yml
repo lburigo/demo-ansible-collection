@@ -143,7 +143,8 @@ jobs:
     uses: ./.github/workflows/_prepare-stage.yml
     with:
       image: ${{ needs.setup-environment.outputs.image_tag }}
-
+    secrets:
+      automation_hub_token: ${{ secrets.AUTOMATION_HUB_TOKEN }}
   test:
     needs: [ prepare, setup-environment ]
     uses: ./.github/workflows/_test-stage.yml
@@ -175,6 +176,8 @@ jobs:
     uses: ./.github/workflows/_publish-stage.yml
     with:
       image: ${{ needs.setup-environment.outputs.image_tag }}
+    secrets:
+      automation_hub_token: ${{ secrets.AUTOMATION_HUB_TOKEN }}
     # Binds this job to the 'production' environment settings
     # environment: 
     #   name: production

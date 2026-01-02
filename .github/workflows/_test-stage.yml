@@ -104,6 +104,14 @@ jobs:
     - name: Test | job-ansible-tox-sanity
       id: job-ansible-tox-sanity
       run: |
+        export ANSIBLE_COLLECTIONS_PATH=./.ansible/collections
+        COLLECTION_INSTALL_PATH=$( \
+          ansible-galaxy collection install --force . | \
+          grep "Installing" | \
+          awk -F "'" '{ print $4 }' \
+        )
+        export COLLECTION_DIR=${COLLECTION_INSTALL_PATH}
+        ansible-galaxy collection list
         tox --verbose --listenvs-all
         tox
   job-ansible-tox-integration:
@@ -125,5 +133,19 @@ jobs:
     - name: Test | job-ansible-tox-integration
       id: job-ansible-tox-integration
       run: |
-        tox --ansible --conf tox-ansible.ini list
-        tox --ansible --conf tox-ansible.ini
+        export ANSIBLE_COLLECTIONS_PATH=./.ansible/collections
+        COLLECTION_INSTALL_PATH=$( \
+          ansible-galaxy collection install --force . | \
+          grep "Installing" | \
+          awk -F "'" '{ print $4 }' \
+        )
+        export COLLECTION_DIR=${COLLECTION_INSTALL_PATH}
+        ansible-galaxy collection list
+        if [ -f tox-ansible.ini ]
+        then
+          tox --ansible --conf tox-ansible.ini list
+          tox --ansible --conf tox-ansible.ini
+        else
+          echo "❌ Error: File not found tox-ansible.ini"
+          exit 1
+        fi

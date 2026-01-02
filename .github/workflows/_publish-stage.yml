@@ -42,6 +42,7 @@ jobs:
     runs-on: ubuntu-latest
     # environment: ${{ inputs.environment }}
     steps:
+    - uses: actions/checkout@v4
     - name: Publish | job-package-publisher-rh-automation-hub
       id: job-package-publisher-rh-automation-hub
       env:

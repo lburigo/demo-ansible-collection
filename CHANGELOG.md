@@ -1,6 +1,20 @@
 # CHANGELOG
 
 
+## v1.9.4 (2026-01-02)
+
+### Bug Fixes
+
+- Add check for hub token
+  ([`8b85b7c`](https://github.com/open-appdev-lab/demo-ansible-collection/commit/8b85b7c588e2f7d16b8b4063fa6bb7901ec749af))
+
+- Add token validation
+  ([`4cb9e6e`](https://github.com/open-appdev-lab/demo-ansible-collection/commit/4cb9e6ea69bb3bbcafbee50f6d687cf0af46e371))
+
+- Fix issues with secrets
+  ([`029bfe6`](https://github.com/open-appdev-lab/demo-ansible-collection/commit/029bfe68d2a8daf118156edd22f64e7da5953345))
+
+
 ## v1.9.3 (2026-01-02)
 
 ### Bug Fixes

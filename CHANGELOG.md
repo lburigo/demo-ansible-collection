@@ -1,6 +1,14 @@
 # CHANGELOG
 
 
+## v1.10.0 (2026-01-02)
+
+### Features
+
+- Add build step
+  ([`ca3fa8b`](https://github.com/open-appdev-lab/demo-ansible-collection/commit/ca3fa8b34303207ef01f1f215496a62e549da92a))
+
+
 ## v1.9.5 (2026-01-02)
 
 ### Bug Fixes

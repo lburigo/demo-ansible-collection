@@ -37,24 +37,60 @@ jobs:
 
     - name: Prepare | job-ansible-validate-tokens
       id: job-ansible-validate-tokens
+      env:
+          AUTOMATION_HUB_URL: ${{ vars.AUTOMATION_HUB_URL || 'https://console.redhat.com/api/automation-hub/' }}
+          AUTOMATION_HUB_TOKEN: ${{ secrets.AUTOMATION_HUB_TOKEN }}
+          # Validate Automation Hub Certified Token"
+          # AUTOMATION_HUB_TOKEN: ${{ secrets.ANSIBLE_GALAXY_SERVER_AUTOMATION_HUB_CERTIFIED_TOKEN }}
+          # Validate Automation Hub Validated Token"
+          # AUTOMATION_HUB_TOKEN: ${{ secrets.ANSIBLE_GALAXY_SERVER_AUTOMATION_HUB_VALIDATED_TOKEN }}
       run: |
-        echo "TODO"
-  # image: $[[ inputs.opt-image ]]
-  # stage: $[[ inputs.opt-stage ]]
-  # tags: $[[ inputs.opt-ci-tags ]]
-  # script:
-  #   - echo "INFO Validate Automation Hub Certified Token"
-  #   - >
-  #     curl $[[ inputs.opt-validation-url ]]
-  #     -d grant_type=refresh_token -d client_id="$[[ inputs.opt-client-id ]]"
-  #     -d refresh_token="${ANSIBLE_GALAXY_SERVER_AUTOMATION_HUB_CERTIFIED_TOKEN}"
-  #     --fail --silent --show-error --output /dev/null
-  #   - echo "INFO Validate Automation Hub Validated Token"
-  #   - >
-  #     curl $[[ inputs.opt-validation-url ]]
-  #     -d grant_type=refresh_token -d client_id="$[[ inputs.opt-client-id ]]"
-  #     -d refresh_token="${ANSIBLE_GALAXY_SERVER_AUTOMATION_HUB_VALIDATED_TOKEN}"
-  #     --fail --silent --show-error --output /dev/null
+
+        echo "Starting Token Validation..."
+                  
+        # DETECT HUB TYPE BASED ON URL
+        if [[ "$AUTOMATION_HUB_URL" == *"console.redhat.com"* ]]; then
+            echo "Type: Red Hat SaaS (console.redhat.com)"
+            echo "Action: Verifying Offline Token via SSO exchange..."
+
+            HTTP_CODE=$(curl -s -o /dev/null -w "%{http_code}" \
+                https://sso.redhat.com/auth/realms/redhat-external/protocol/openid-connect/token \
+                -d grant_type=refresh_token \
+                -d client_id="cloud-services" \
+                -d refresh_token="$AUTOMATION_HUB_TOKEN")
+                
+            if [[ "$HTTP_CODE" == "200" ]]; then
+                echo "✅ Success: Red Hat Offline Token is valid."
+            else
+                echo "❌ Error: Token rejected by Red Hat SSO (HTTP $HTTP_CODE)."
+                exit 1
+            fi
+
+        else
+            echo "Type: Private Automation Hub (On-Premise)"
+            echo "Action: Verifying Bearer Token against $HUB_URL..."
+
+            # Private Hubs usually expose /api/galaxy/ or /api/automation-hub/
+            # We check the 'namespaces' endpoint which is standard and lightweight
+
+            # Ensure URL ends with / if not present (simple cleanup)
+            BASE_URL="${AUTOMATION_HUB_URL%/}"
+                      
+            HTTP_CODE=$(curl -s -o /dev/null -w "%{http_code}" \
+                -H "Authorization: Bearer $AUTOMATION_HUB_TOKEN" \
+                "$BASE_URL/v3/namespaces/?limit=1")
+          
+            if [[ "$HTTP_CODE" == "200" ]]; then
+                echo "✅ Success: Private Hub Token is valid."
+            elif [[ "$HTTP_CODE" == "401" ]] || [[ "$HTTP_CODE" == "403" ]]; then
+                echo "❌ Error: Unauthorized. Check your Private Hub Token (HTTP $HTTP_CODE)."
+                exit 1
+            else
+                # Allow for some flexibility (e.g. 404 if endpoint differs, but usually implies connectivity works)
+                echo "⚠️ Warning: Received HTTP $HTTP_CODE. Proceeding with caution, but authentication might be suspect."
+                echo "Expected 200 OK from $BASE_URL/v3/namespaces/"
+            fi
+        fi
 
   job-ansible-collection-install:
     runs-on: ubuntu-latest

@@ -62,9 +62,6 @@ issues: http://example.com/issue/tracker
 # and '.git' are always filtered. Mutually exclusive with 'manifest'
 build_ignore:
   - .ansible-lint
-  - CHANGELOG.md
-  - CHANGELOG.rst
-  - changelogs
   - collection-build.log
   - .git
   - .gitattributes

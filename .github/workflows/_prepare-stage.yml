@@ -77,10 +77,16 @@ jobs:
         fi
         exit $RETURN
 
+    - name: Debug - show local ansible collections
+      id: debug
+      run: |
+        ls .ansible
+
     - name: Prepare | job-ansible-collection-install (2/2)
       uses: actions/upload-artifact@v4
       if: always() && steps.job-ansible-collection-install.outcome != 'skipped'
       with:
-        name: .ansible
+        name: local-ansible-collections
         path: .ansible
         if-no-files-found: error
+        include-hidden-files: true

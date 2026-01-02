@@ -47,6 +47,11 @@ jobs:
       run: |
 
         echo "Starting Token Validation..."
+        
+        if [[ -z "${AUTOMATION_HUB_TOKEN}" ]]; then
+          echo "AUTOMATION_HUB_TOKEN is not defined. Exiting"
+          exit 1
+        fi
                   
         # DETECT HUB TYPE BASED ON URL
         if [[ "$AUTOMATION_HUB_URL" == *"console.redhat.com"* ]]; then

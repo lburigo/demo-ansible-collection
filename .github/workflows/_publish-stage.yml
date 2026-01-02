@@ -18,7 +18,7 @@ on:
         description: 'The Authentication Token for the Hub'
 
 jobs:
-  job-package-publisher-github:
+  build-collection:
     runs-on: ubuntu-latest
     container:
       image: ${{ inputs.image }}
@@ -27,6 +27,35 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
     steps:
     - uses: actions/checkout@v4
+
+    - name: Publish | build-collection
+      id: build-collection
+      env:
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+        git config --global --add safe.directory .
+        ./.github/ci-utils/build.sh
+    - name: Publish | upload-collection
+      uses: actions/upload-artifact@v4
+      if: always() && steps.build-collection.outcome != 'skipped'
+      with:
+        name: collection
+        path: "*.tar.gz"
+        if-no-files-found: error
+  job-package-publisher-github:
+    runs-on: ubuntu-latest
+    needs: build-collection
+    container:
+      image: ${{ inputs.image }}
+      credentials:
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+    - uses: actions/checkout@v4
+    - name: Publish | download-collection
+      uses: actions/download-artifact@v4
+      with:
+        name: collection
 
     - name: Publish | job-package-publisher-github
       id: job-package-publisher-github
@@ -40,17 +69,19 @@ jobs:
     permissions:
       contents: write
     runs-on: ubuntu-latest
+    needs: build-collection
     # environment: ${{ inputs.environment }}
     steps:
-    - uses: actions/checkout@v4
+    - name: Publish | download-collection
+      uses: actions/download-artifact@v4
+      with:
+        name: collection
     - name: Publish | job-package-publisher-rh-automation-hub
       id: job-package-publisher-rh-automation-hub
       env:
         AUTOMATION_HUB_URL: ${{ vars.HUB_URL || 'https://console.redhat.com/api/automation-hub/' }}
         AUTOMATION_HUB_TOKEN: ${{ secrets.AUTOMATION_HUB_TOKEN }}
       run: |
-        ./.github/ci-utils/build.sh
-        ls *.tar.gz
         ansible-galaxy collection publish ./*.tar.gz \
-        --server "$AUTOMATION_HUB_URL" \
-        --token "$AUTOMATION_HUB_TOKEN"
+          --server "$AUTOMATION_HUB_URL" \
+          --token "$AUTOMATION_HUB_TOKEN"

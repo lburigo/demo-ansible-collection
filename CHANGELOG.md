@@ -1,6 +1,14 @@
 # CHANGELOG
 
 
+## v1.13.0 (2026-01-03)
+
+### Features
+
+- Fixes
+  ([`2ffdbed`](https://github.com/open-appdev-lab/demo-ansible-collection/commit/2ffdbed1220d0417b65e9d944e36f4833f886fe7))
+
+
 ## v1.12.0 (2026-01-03)
 
 ### Features

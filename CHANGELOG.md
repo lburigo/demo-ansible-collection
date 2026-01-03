@@ -1,6 +1,20 @@
 # CHANGELOG
 
 
+## v1.14.3 (2026-01-03)
+
+### Bug Fixes
+
+- Add inherit secrets
+  ([`e531222`](https://github.com/open-appdev-lab/demo-ansible-collection/commit/e531222c023a3e3de443a8084852cf31277f6d38))
+
+- Clean up
+  ([`0846a7d`](https://github.com/open-appdev-lab/demo-ansible-collection/commit/0846a7d2b47c20e005151a2a0d4ed3faa0e8b746))
+
+- Fix permissions
+  ([`3ae4d86`](https://github.com/open-appdev-lab/demo-ansible-collection/commit/3ae4d860bc10f7bb18cb8996b4fbdd43d0c606ec))
+
+
 ## v1.14.2 (2026-01-03)
 
 ### Bug Fixes

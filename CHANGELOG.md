@@ -1,6 +1,14 @@
 # CHANGELOG
 
 
+## v1.14.6 (2026-01-03)
+
+### Bug Fixes
+
+- Move build script to scripts directory
+  ([`432e605`](https://github.com/open-appdev-lab/demo-ansible-collection/commit/432e60561ea4e6259f2a1e4722b97ebf63f17152))
+
+
 ## v1.14.5 (2026-01-03)
 
 ### Bug Fixes

@@ -5,7 +5,7 @@ on:
     outputs:
       image_tag:
         description: "Image tag of container image with ansible environment"
-        value: ${{ jobs.setup-environment.outputs.image_tag }}
+        value: ${{ jobs.build-push-image.outputs.image_tag }}
         
 jobs:
   build-push-image:

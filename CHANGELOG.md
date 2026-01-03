@@ -1,6 +1,14 @@
 # CHANGELOG
 
 
+## v1.14.2 (2026-01-03)
+
+### Bug Fixes
+
+- Use external workflow
+  ([`249b0b7`](https://github.com/open-appdev-lab/demo-ansible-collection/commit/249b0b7446b2d0bc01ce85113d1c70dabd8df87a))
+
+
 ## v1.14.1 (2026-01-03)
 
 ### Bug Fixes

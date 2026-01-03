@@ -1,6 +1,17 @@
 # CHANGELOG
 
 
+## v1.14.5 (2026-01-03)
+
+### Bug Fixes
+
+- Cleanup
+  ([`ed42add`](https://github.com/open-appdev-lab/demo-ansible-collection/commit/ed42add6f343047dc6d9da51c304ccd297847d66))
+
+- Remove docker file and requirements-ci
+  ([`54df768`](https://github.com/open-appdev-lab/demo-ansible-collection/commit/54df768c6ada1ceedb87711149d98e4be9483166))
+
+
 ## v1.14.4 (2026-01-03)
 
 ### Bug Fixes

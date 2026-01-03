@@ -20,7 +20,7 @@ on:
         description: 'The Authentication Token for the Hub'
 
 jobs:
-  job-package-publisher-github:
+  package-publisher-github:
     runs-on: ubuntu-latest
     container:
       image: ${{ inputs.image }}
@@ -35,15 +35,15 @@ jobs:
       with:
         name: build-asset
 
-    - name: Publish | job-package-publisher-github
-      id: job-package-publisher-github
+    - name: Publish | package-publisher-github
+      id: package-publisher-github
       env:
         GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
         git config --global --add safe.directory .
         semantic-release -vv publish --tag ${{ inputs.tag_name }}
 
-  job-package-publisher-rh-automation-hub:
+  package-publisher-automation-hub:
     runs-on: ubuntu-latest
     # environment: ${{ inputs.environment }}
     steps:
@@ -51,8 +51,8 @@ jobs:
       uses: actions/download-artifact@v4
       with:
         name: build-asset
-    - name: Publish | job-package-publisher-rh-automation-hub
-      id: job-package-publisher-rh-automation-hub
+    - name: Publish | package-publisher-automation-hub
+      id: package-publisher-automation-hub
       env:
         AUTOMATION_HUB_URL: ${{ vars.HUB_URL || 'https://console.redhat.com/api/automation-hub/' }}
         AUTOMATION_HUB_TOKEN: ${{ secrets.AUTOMATION_HUB_TOKEN }}

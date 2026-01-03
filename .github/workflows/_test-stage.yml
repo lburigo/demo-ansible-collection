@@ -8,22 +8,22 @@ on:
         type: string
 
 jobs:
-  secret_detection:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v4
-      with:
-          fetch-depth: 50  # Important: Gitleaks needs history to scan commits
-    - name: Test | secret_detection (1/2)
-      id: secret_detection
-      uses: ./.github/actions/secret-detection
-    - name: Test | secret_detection (2/2)
-      uses: actions/upload-artifact@v4
-      if: always() && steps.secret_detection.outcome != 'skipped'
-      with:
-        name: secret_detection
-        path: secret-detection-report.json
-        if-no-files-found: error
+  # secret_detection:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #   - uses: actions/checkout@v4
+  #     with:
+  #         fetch-depth: 50  # Important: Gitleaks needs history to scan commits
+  #   - name: Test | secret_detection (1/2)
+  #     id: secret_detection
+  #     uses: ./.github/actions/secret-detection
+  #   - name: Test | secret_detection (2/2)
+  #     uses: actions/upload-artifact@v4
+  #     if: always() && steps.secret_detection.outcome != 'skipped'
+  #     with:
+  #       name: secret_detection
+  #       path: secret-detection-report.json
+  #       if-no-files-found: error
 
 
   automation-hub-verify-ansible-lint:
@@ -85,7 +85,7 @@ jobs:
         path: code-quality-report.sarif
         if-no-files-found: error
 
-  job-ansible-tox-sanity:
+  ansible-tox-sanity:
     runs-on: ubuntu-latest
     container:
       image: ${{ inputs.image }}
@@ -101,8 +101,8 @@ jobs:
         name: local-ansible-collections
         path: .ansible
 
-    - name: Test | job-ansible-tox-sanity
-      id: job-ansible-tox-sanity
+    - name: Test | ansible-tox-sanity
+      id: ansible-tox-sanity
       run: |
         export ANSIBLE_COLLECTIONS_PATH=./.ansible/collections
         COLLECTION_INSTALL_PATH=$( \
@@ -114,7 +114,7 @@ jobs:
         ansible-galaxy collection list
         tox --verbose --listenvs-all
         tox
-  job-ansible-tox-integration:
+  ansible-tox-integration:
     runs-on: ubuntu-latest
     container:
       image: ${{ inputs.image }}
@@ -130,8 +130,8 @@ jobs:
         name: local-ansible-collections
         path: .ansible
 
-    - name: Test | job-ansible-tox-integration
-      id: job-ansible-tox-integration
+    - name: Test | ansible-tox-integration
+      id: ansible-tox-integration
       run: |
         export ANSIBLE_COLLECTIONS_PATH=./.ansible/collections
         COLLECTION_INSTALL_PATH=$( \

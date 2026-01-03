@@ -8,7 +8,7 @@ on:
         type: string
 
 jobs:
-  job-ansible-codeclimate:
+  ansible-codeclimate:
     runs-on: ubuntu-latest
     container:
       image: ${{ inputs.image }}
@@ -18,13 +18,13 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
-    - name: Report | job-ansible-codeclimate (1/3)
+    - name: Report | ansible-codeclimate (1/3)
       uses: actions/download-artifact@v4
       with:
         name: automation-hub-verify-ansible-lint
 
-    - name: Report | job-ansible-codeclimate (2/3)
-      id: job-ansible-codeclimate
+    - name: Report | ansible-codeclimate (2/3)
+      id: ansible-codeclimate
       env:
         SARIF_REPORT_FULL_PATH: "./code-quality-report.sarif"
       run: |
@@ -38,10 +38,10 @@ jobs:
         if [[ 0 == $RETURN ]]; then echo "Return code $RETURN matches expected return"; exit 0; fi
         exit $RETURN
 
-    - name: Report | job-ansible-codeclimate  (3/3)
+    - name: Report | ansible-codeclimate  (3/3)
       uses: actions/upload-artifact@v4
-      if: always() && steps.job-ansible-codeclimate.outcome != 'skipped'
+      if: always() && steps.ansible-codeclimate.outcome != 'skipped'
       with:
-        name: job-ansible-codeclimate
+        name: ansible-codeclimate
         path: code-quality-report.json
         if-no-files-found: error

@@ -164,6 +164,6 @@ jobs:
     uses: ./.github/workflows/_publish-stage.yml
     with:
       image: ${{ needs.setup-environment.outputs.image_tag }}
-      tag_name: v${{ needs.release.outputs.new_version }}
+      tag_name: ${{ needs.release.outputs.new_version }}
     secrets:
       automation_hub_token: ${{ secrets.AUTOMATION_HUB_TOKEN }}

@@ -1,6 +1,17 @@
 # CHANGELOG
 
 
+## v1.11.2 (2026-01-03)
+
+### Bug Fixes
+
+- Correct dependencies
+  ([`d094f03`](https://github.com/open-appdev-lab/demo-ansible-collection/commit/d094f032132232de32179f5a5aeb5e7f6476ae76))
+
+- Fix git config
+  ([`75d4b39`](https://github.com/open-appdev-lab/demo-ansible-collection/commit/75d4b39bd26bdbdae563f0f031a36414896b4f04))
+
+
 ## v1.11.1 (2026-01-02)
 
 ### Bug Fixes

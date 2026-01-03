@@ -72,8 +72,8 @@ build_ignore:
   - .pre-commit-config.yaml
   - .prettierignore
   - pyproject.toml
-  - requirements-ci.txt
   - requirements-dev.txt
+  - scripts
   - test-requirements.txt
   - tox-ansible.ini
   - tox.ini

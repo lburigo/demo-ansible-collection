@@ -30,7 +30,7 @@ for dir in $(ls -d roles/*); do
   if [ -f ${dir}/docsible-role-template.md ]; then
     DOCSIBLE_TEMPLATE="${dir}/docsible-role-template.md"
   else
-    DOCSIBLE_TEMPLATE="./.github/ci-utils/docsible-role-template.md"
+    DOCSIBLE_TEMPLATE="./scripts/docsible-role-template.md"
   fi
   docsible --md-template ${DOCSIBLE_TEMPLATE} \
     --role ${dir} --no-backup --append | tee -a collection-build.log

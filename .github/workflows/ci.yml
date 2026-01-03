@@ -21,26 +21,15 @@ permissions:
   contents: read
   packages: read
 
-  #     - name: Upload | Distribution Artifacts
-  #       uses: actions/upload-artifact@v4
-  #       with:
-  #         name: distribution-artifacts
-  #         path:  ${{ format('example-demo-{}.tar.gz', steps.release.outputs.tag) }}
-  #         if-no-files-found: error
-
-  #   outputs:
-  #     released: ${{ steps.release.outputs.released || 'false' }}
-
+jobs:
   # ci:
   #   uses: open-appdev-lab/ansible-collections-ci/.github/workflows/main.yml@beta
   #   with:
   #     environment: "staging"
-    # secrets: inherit
-  # demo:
-  #   uses: open-appdev-lab/ansible-collections-ci/.github/workflows/demo.yml@beta
+  #     path:  ${{ format('example-demo-{}.tar.gz', steps.release.outputs.tag) }}
+  #     released: ${{ steps.release.outputs.released || 'false' }}
+  #   secrets: inherit
 
-
-jobs:
   setup-environment:
     uses: ./.github/workflows/_setup_environment.yml
     permissions:

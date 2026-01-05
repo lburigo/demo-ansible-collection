@@ -1,6 +1,14 @@
 # CHANGELOG
 
 
+## v1.14.8 (2026-01-05)
+
+### Bug Fixes
+
+- Change ref
+  ([`4f0946a`](https://github.com/open-appdev-lab/demo-ansible-collection/commit/4f0946a631bd89c788b069a7aa19a1d2b1bd4641))
+
+
 ## v1.14.7 (2026-01-05)
 
 ### Bug Fixes

@@ -1,6 +1,44 @@
 # CHANGELOG
 
 
+## v1.14.7 (2026-01-05)
+
+### Bug Fixes
+
+- Change ref
+  ([`1144efb`](https://github.com/open-appdev-lab/demo-ansible-collection/commit/1144efb8dfba133b8033124b04ba1954f09c52e1))
+
+- Change ref
+  ([`96cce8a`](https://github.com/open-appdev-lab/demo-ansible-collection/commit/96cce8a9cff8a92b6c9df58ae0822c4df8f0d669))
+
+- Change ref
+  ([`782fed0`](https://github.com/open-appdev-lab/demo-ansible-collection/commit/782fed086f72e3e23089399edc8c7bc8f57cfe6f))
+
+- Change ref
+  ([`f94b59f`](https://github.com/open-appdev-lab/demo-ansible-collection/commit/f94b59f52259b920e9867544cb137b1d2601532b))
+
+- Change ref
+  ([`7056aaa`](https://github.com/open-appdev-lab/demo-ansible-collection/commit/7056aaa3349bc415417af0f120d8498cd0ee1630))
+
+- Change ref
+  ([`9c8019f`](https://github.com/open-appdev-lab/demo-ansible-collection/commit/9c8019f2aa0814c0ab3dd099338b068702f10671))
+
+- Change ref
+  ([`7cfbe79`](https://github.com/open-appdev-lab/demo-ansible-collection/commit/7cfbe797ebe345e41c4cbd57be1d2bcf28feaf4d))
+
+- Change ref
+  ([`a16546b`](https://github.com/open-appdev-lab/demo-ansible-collection/commit/a16546baecf1338d1d0d6e5037ce52572410f356))
+
+- Update ref
+  ([`885b12e`](https://github.com/open-appdev-lab/demo-ansible-collection/commit/885b12e66bbffc323a70725fff52b0688d14bfd5))
+
+- Update ref
+  ([`4db08b4`](https://github.com/open-appdev-lab/demo-ansible-collection/commit/4db08b4961af93119db7f38dc60e160c74e31219))
+
+- Update workflow ref
+  ([`41aac1a`](https://github.com/open-appdev-lab/demo-ansible-collection/commit/41aac1a5dd8dabf731102b698d65a3c7c48928ae))
+
+
 ## v1.14.6 (2026-01-03)
 
 ### Bug Fixes

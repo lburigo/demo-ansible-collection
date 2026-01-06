@@ -1,6 +1,14 @@
 # CHANGELOG
 
 
+## v2.0.0 (2026-01-06)
+
+### Features
+
+- Check ci in pr
+  ([`6a2594b`](https://github.com/open-appdev-lab/demo-ansible-collection/commit/6a2594b7c5b6bbd8f96aab4b062dd87c117aa335))
+
+
 ## v1.14.8 (2026-01-05)
 
 ### Bug Fixes

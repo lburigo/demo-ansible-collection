@@ -9,7 +9,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  internal-ci:
+  ci:
     if: github.event.pull_request.head.repo.full_name == github.repository
     uses: open-appdev-lab/ansible-collections-ci/.github/workflows/ci-ansible-collection.yml@main
     permissions:

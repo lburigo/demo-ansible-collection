@@ -22,6 +22,8 @@ var_naming_pattern: ^[a-z_][a-z0-9_]*$
 
 use_default_rules: true
 
+parseable: true
+
 skip_list:
   - fqcn[canonical] # Needed for redhat.openshift.k8s / kubernetes.core.k8s_info
 

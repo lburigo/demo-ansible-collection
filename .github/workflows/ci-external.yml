@@ -5,6 +5,10 @@ on:
     types: [opened, synchronize, reopened]
     branches: [ "main" ]
 
+concurrency:
+  group: external-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
 jobs:
   external-approval:
     if: github.event.pull_request.head.repo.full_name != github.repository

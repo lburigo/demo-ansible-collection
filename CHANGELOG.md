@@ -1,6 +1,14 @@
 # CHANGELOG
 
 
+## v2.0.3 (2026-01-21)
+
+### Bug Fixes
+
+- Update concurrency
+  ([`ebaeee0`](https://github.com/open-appdev-lab/demo-ansible-collection/commit/ebaeee0daa6c58c8b2aaed6519b3f55f4a511bc2))
+
+
 ## v2.0.2 (2026-01-21)
 
 ### Bug Fixes

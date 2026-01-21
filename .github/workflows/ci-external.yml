@@ -1,0 +1,17 @@
+name: CI-External
+
+on:
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  # External: Uses same Repository secrets, but only AFTER you click approve
+  external-ci:
+    if: github.event.pull_request.head.repo.full_name != github.repository
+    uses: open-appdev-lab/ansible-collections-ci/.github/workflows/ci-ansible-collection.yml@main
+    permissions:
+      contents: write
+      packages: write
+    environment: external-ci  # Enforce manual gate
+    secrets:
+      automation_hub_token: ${{ secrets.AUTOMATION_HUB_TOKEN }}
